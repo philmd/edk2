@@ -27,7 +27,9 @@ matrix:
         #- cd philmd/edk2
         #$ pwd: /c/Users/travis/build/philmd/edk2
         - ./edksetup.bat Rebuild
-        - build
+        - ./edksetup.bat --nt32
+        - cat Conf\\target.txt
+        - build -t VS2015x86 -a X64 -p OvmfPkg/OvmfPkgX64.dsc
         #set EDK_TOOLS_PATH=C:\Tools
         #set EDK_TOOLS_PATH=%WORKSPACE%\BaseTools
         #set WORKSPACE=C:\MyWork\Proj1\edk2
