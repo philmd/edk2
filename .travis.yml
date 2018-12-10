@@ -14,15 +14,15 @@ matrix:
       install:
         - choco install -y python2 --params '"/InstallDir:C:\tools\python27"'
         - choco install -y nasm
-        #- cat "C:\ProgramData\chocolatey\logs\chocolatey.log"
+        - grep nasm "C:\ProgramData\chocolatey\logs\chocolatey.log"
         - choco install -y openssl.light
       script:
         - export PATH="$PATH:/c/Program Files (x86)/Microsoft Visual Studio/Installer/"
         - export MSVC=$(vswhere -latest -products "*" -requires Microsoft.Component.MSBuild -property installationPath)
         - export MSVC=$(echo /$MSVC | sed -e 's/\\/\//g' -e 's/://')
         - export PATH="$PATH:$MSVC/MSBuild/15.0/Bin/"
-        - set PYTHON_HOME=C:\tools\Python27
-        - set NASM_PREFIX=C:\tools\nasm\
+        - export PYTHON_HOME=C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\opt\bin
+        - export NASM_PREFIX=C:\tools\nasm\
         #- cd philmd/edk2
         #$ pwd: /c/Users/travis/build/philmd/edk2
         - ./edksetup.bat Rebuild
