@@ -14,7 +14,7 @@ matrix:
       install:
         - choco install -y python2 --params '"/InstallDir:C:\tools\python27"'
         - choco install -y nasm
-        - type C:\ProgramData\chocolatey\logs\chocolatey.log
+        - type "C:\ProgramData\chocolatey\logs\chocolatey.log"
         - choco install -y openssl.light
       script:
         - export PATH="$PATH:/c/Program Files (x86)/Microsoft Visual Studio/Installer/"
