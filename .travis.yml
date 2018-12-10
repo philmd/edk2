@@ -21,8 +21,9 @@ matrix:
         - export MSVC=$(vswhere -latest -products "*" -requires Microsoft.Component.MSBuild -property installationPath)
         - export MSVC=$(echo /$MSVC | sed -e 's/\\/\//g' -e 's/://')
         - export PATH="$PATH:$MSVC/MSBuild/15.0/Bin/"
-        - export PYTHON_HOME=C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\opt\bin
-        - export NASM_PREFIX=C:\tools\nasm\
+        - export PYTHON_HOME=C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\opt\\bin
+        - export CYGWIN_HOME=C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\opt\\bin
+        - export NASM_PREFIX=C:\\ProgramData\\chocolatey\\lib\\nasm
         #- cd philmd/edk2
         #$ pwd: /c/Users/travis/build/philmd/edk2
         - ./edksetup.bat Rebuild
