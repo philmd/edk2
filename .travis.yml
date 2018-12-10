@@ -16,11 +16,14 @@ matrix:
         - choco install -y openssl.light
       script:
         #- cd edk2
-        #- nuget restore
+        - nuget restore
         - export PATH="$PATH:/c/Program Files (x86)/Microsoft Visual Studio/Installer/"
         - export MSVC=$(vswhere -latest -products "*" -requires Microsoft.Component.MSBuild -property installationPath)
         - export MSVC=$(echo /$MSVC | sed -e 's/\\/\//g' -e 's/://')
         - export PATH="$PATH:$MSVC/MSBuild/15.0/Bin/"
+        - dir /s
+        - pwd
+        - cwd
         - edksetup
         - edksetup.bat
         - build
