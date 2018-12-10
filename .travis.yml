@@ -6,13 +6,13 @@ compiler:
 cache: ccache
 os:
   - windows
-git:
-  # we want to do this ourselves
-  submodules: false
-before_install:
-  - git clone https://github.com/tianocore/edk2 edk2
-  - cd edk2
-  - git submodule update --init --recursive
+#git:
+#  # we want to do this ourselves
+#  submodules: false
+#before_install:
+#  - git clone https://github.com/tianocore/edk2 edk2
+#  - cd edk2
+#  - git submodule update --init --recursive
 
 matrix:
   include:
@@ -27,12 +27,11 @@ matrix:
         - export MSVC=$(vswhere -latest -products "*" -requires Microsoft.Component.MSBuild -property installationPath)
         - export MSVC=$(echo /$MSVC | sed -e 's/\\/\//g' -e 's/://')
         - export PATH="$PATH:$MSVC/MSBuild/15.0/Bin/"
-        - cd edk2
-        #- dir /s
-        #- pwd
-        #- cwd
-        - edksetup
-        - edksetup.bat
+        #- cd philmd/edk2
+        #$ pwd: /c/Users/travis/build/philmd/edk2
+        - ls
+        - ./edksetup
+        - ./edksetup.bat
         - build
         #- set PYTHON_HOME=C:\Python27
 
