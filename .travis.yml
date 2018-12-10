@@ -6,13 +6,6 @@ compiler:
 cache: ccache
 os:
   - windows
-#git:
-#  # we want to do this ourselves
-#  submodules: false
-#before_install:
-#  - git clone https://github.com/tianocore/edk2 edk2
-#  - cd edk2
-#  - git submodule update --init --recursive
 
 matrix:
   include:
@@ -22,16 +15,13 @@ matrix:
         - choco install -y nasm
         - choco install -y openssl.light
       script:
-        - nuget restore
         - export PATH="$PATH:/c/Program Files (x86)/Microsoft Visual Studio/Installer/"
         - export MSVC=$(vswhere -latest -products "*" -requires Microsoft.Component.MSBuild -property installationPath)
         - export MSVC=$(echo /$MSVC | sed -e 's/\\/\//g' -e 's/://')
         - export PATH="$PATH:$MSVC/MSBuild/15.0/Bin/"
         #- cd philmd/edk2
         #$ pwd: /c/Users/travis/build/philmd/edk2
-        - ls
-        - ./edksetup
-        - ./edksetup.bat
+        - ./edksetup.bat Rebuild
         - build
         #- set PYTHON_HOME=C:\Python27
 
